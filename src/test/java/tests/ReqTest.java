@@ -4,23 +4,25 @@ package tests;
 
 import io.restassured.response.Response;
 import models.User;
-import models.UserData;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import specs.Specs;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static specs.Specs.responseSpec200;
 
 
 public class ReqTest extends TestBase {
+
     @Test
     @DisplayName("Checking email using Groovy")
     void checkEmailUsingGroovy() {
         given()
-                .spec(request)
+                .spec(Specs.request)
                 .when()
                 .get("/users")
                 .then()
@@ -36,19 +38,19 @@ public class ReqTest extends TestBase {
 
         User user = new User();
         user.setEmail("eve.holt@reqres.in");
-        user.setPassword("pistol");
+        user.setPassword("cityslicka");
 
         User response = given()
-                .spec(request)
+                .spec(Specs.request)
                 .body(user)
                 .when()
-                .post("/register")
+                .post("/login")
                 .then()
                 .spec(responseSpec200)
                 .log().body()
                 .extract().as(User.class);
 
-        assertEquals("4", response.getId());
+
         assertEquals("QpwL5tke4Pnpja7X4", response.getToken());
     }
 
@@ -60,7 +62,7 @@ public class ReqTest extends TestBase {
         user.setPassword("cityslicka");
 
         User response = given()
-                .spec(request)
+                .spec(Specs.request)
                 .body(user)
                 .when()
                 .post("/login")
@@ -79,7 +81,7 @@ public class ReqTest extends TestBase {
         user.setEmail("peter@klaven");
 
         User response = given()
-                .spec(request)
+                .spec(Specs.request)
                 .body(user)
                 .when()
                 .post("/login")
@@ -99,7 +101,7 @@ public class ReqTest extends TestBase {
         user.setJob("leader");
 
         User response = given()
-                .spec(request)
+                .spec(Specs.request)
                 .body(user)
                 .when()
                 .post("/users")
@@ -119,7 +121,7 @@ public class ReqTest extends TestBase {
         user.setJob("zion resident");
 
         User response = given()
-                .spec(request)
+                .spec(Specs.request)
                 .body(user)
                 .when()
                 .put("/users/2")
@@ -131,29 +133,13 @@ public class ReqTest extends TestBase {
         assertEquals(response.getJob(), user.getJob());
     }
 
-    @Test
-    @DisplayName("Search for a user")
-    void singleUser() {
-
-        UserData response = given()
-                .spec(request)
-                .when()
-                .get("/users/2")
-                .then()
-                .spec(responseSpec200)
-                .log().body()
-                .extract().as(UserData.class);
-
-        assertEquals("2", response.getUser().getId());
-        assertEquals("janet.weaver@reqres.in", response.getUser().getEmail());
-    }
 
     @Test
     @DisplayName("Search for a non-existent user")
     void singleUserNotFound() {
 
         Response response = given()
-                .spec(request)
+                .spec(Specs.request)
                 .when()
                 .get("/users/23")
                 .then()
