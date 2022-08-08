@@ -38,7 +38,7 @@ public class ReqTest extends TestBase {
 
         User user = new User();
         user.setEmail("eve.holt@reqres.in");
-        user.setPassword("cityslicka");
+        user.setPassword("pistol");
 
         User response = given()
                 .spec(Specs.request)
@@ -50,7 +50,7 @@ public class ReqTest extends TestBase {
                 .log().body()
                 .extract().as(User.class);
 
-
+        assertEquals("4", response.getId());
         assertEquals("QpwL5tke4Pnpja7X4", response.getToken());
     }
 
