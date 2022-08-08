@@ -11,7 +11,6 @@
 - <a href="#four_leaf_clover-запуск-из-терминала">Запуск из терминала</a>
 - <a href="#four_leaf_clover-allure-отчет">Allure отчет</a>
 - <a href="#four_leaf_clover-отчет-в-telegram">Отчет в Telegram</a>
-- <a href="#four_leaf_clover-видео-примеры-прохождения-тестов">Видео примеры прохождения тестов</a>
 
 
 ## :four_leaf_clover: Технологии и инструменты
@@ -32,9 +31,9 @@
 
 
 ## :four_leaf_clover: Сборка в Jenkins
-### <a target="_blank" href="https://jenkins.autotests.cloud/job/qa.guru-hm13-Autotest/">Сборка в Jenkins</a>
+### <a target="_blank" href="https://jenkins.autotests.cloud/job/HomeApi1/">Сборка в Jenkins</a>
 <p align="center">
-<img title="Jenkins Dashboard" src="images/">
+<img title="Jenkins Dashboard" src="images/J1.png">
 </p>  
 
 ## :four_leaf_clover: Запуск из терминала
@@ -43,39 +42,24 @@
 gradle clean test
 ```
 
-Удаленный запуск:
-```
-clean
-test
--Dbrowser=${BROWSER}
--DbrowserSize=${BROWSER_SIZE} 
--DbrowserVersion=${BROWSER_VERSION}
--DbaseUrl=${BASE_URL}
--DremoteDriverUrl=${REMOTE}
-```
-
+### <a target="_blank" href="https://jenkins.autotests.cloud/job/HomeApi1/1/allure/">Сборка в Allure</a>
 ## :four_leaf_clover: Allure отчет
 - ### Главный экран отчета
 <p align="center">
-<img title="Allure Overview Dashboard" src="images/ALLUREREPORT.png">
+<img title="Allure Overview Dashboard" src="images/A1.png">
 </p>
 
 - ### Страница с проведенными тестами
 <p align="center">
-<img title="Allure Test Page" src="images/ALLURREPOR.png">
+<img title="Allure Test Page" src="images/A2.png">
 </p>
 
 ## :four_leaf_clover: Отчет в Telegram
 <p align="center">
-<img title="TELEGRAMBOT" src="images/TELEGRAMBOT.png">
+<img title="TELEGRAMBOT" src="images/T1.png">
 </p>
 
 
-
-## :four_leaf_clover: Видео примеры прохождения тестов
-> К каждому тесту в отчете прилагается видео. Одно из таких видео представлено ниже.
-<p align="center">
-  <img title="Selenoid Video" src="images/TESTS.gif">
 
 :arrow_up: [Вверх страницы](#anchor)
 
