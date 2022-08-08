@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static specs.Specs.responseSpec200;
+
 
 
 public class ReqTest extends TestBase {
@@ -26,7 +26,7 @@ public class ReqTest extends TestBase {
                 .when()
                 .get("/users")
                 .then()
-                .spec(responseSpec200)
+                .spec(Specs.responseSpec200)
                 .log().body()
                 .body("data.findAll{it.email =~/.*?@reqres.in/}.email.flatten()",
                         hasItems("eve.holt@reqres.in"));
@@ -46,7 +46,7 @@ public class ReqTest extends TestBase {
                 .when()
                 .post("/login")
                 .then()
-                .spec(responseSpec200)
+                .spec(Specs.responseSpec200)
                 .log().body()
                 .extract().as(User.class);
 
@@ -67,7 +67,7 @@ public class ReqTest extends TestBase {
                 .when()
                 .post("/login")
                 .then()
-                .spec(responseSpec200)
+                .spec(Specs.responseSpec200)
                 .log().body()
                 .extract().as(User.class);
 
@@ -126,7 +126,7 @@ public class ReqTest extends TestBase {
                 .when()
                 .put("/users/2")
                 .then()
-                .spec(responseSpec200)
+                .spec(Specs.responseSpec200)
                 .log().body()
                 .extract().as(User.class);
         assertEquals(response.getName(), user.getName());
