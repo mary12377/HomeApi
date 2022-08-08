@@ -44,7 +44,7 @@ public class ReqTest extends TestBase {
                 .spec(Specs.request)
                 .body(user)
                 .when()
-                .post("/login")
+                .post("/register")
                 .then()
                 .spec(Specs.responseSpec200)
                 .log().body()
